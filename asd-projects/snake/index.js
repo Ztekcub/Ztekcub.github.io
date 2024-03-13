@@ -66,6 +66,15 @@ updateInterval = setInterval(update, 100);
  */
 function update() {
   // TODO 5b: Fill in the update function's code block
+  moveSnake();
+
+  if (hasHitWall() || hasCollidedWithSnake()) {
+    endGame();
+  }
+
+  if (hasCollidedWithApple()) {
+    handleAppleCollision();
+  }
 }
 
 function checkForNewDirection(event) {
@@ -79,10 +88,18 @@ function checkForNewDirection(event) {
   if (activeKey === KEY.LEFT) {
     snake.head.direction = "left";
   }
-
+  if (activeKey === KEY.RIGHT) {
+    snake.head.direction = "right"
+  }
+  if (activeKey === KEY.DOWN) {
+    snake.head.direction = "down"
+  }
+  if (activeKey === KEY.UP) {
+    snake.head.direction = "up"
+  }
   // FILL IN THE REST
 
-  // console.log(snake.head.direction);     // uncomment me!
+  console.log(snake.head.direction);     // uncomment me!
 }
 
 function moveSnake() {
@@ -249,7 +266,8 @@ function makeSnakeSquare(row, column) {
 */
 function handleKeyDown(event) {
   // TODO 6a: make the handleKeyDown function register which key is pressed
-  
+  activeKey = event.which;
+console.log(activeKey);
 }
 
 /* Given a gameSquare (which may be a snakeSquare or the apple), position
