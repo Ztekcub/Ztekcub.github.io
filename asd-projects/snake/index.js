@@ -194,10 +194,10 @@ function handleAppleCollision() {
   };
   
   var column = if (snake.tail.direction === "up"){
-    snakeSquare = snake.tail.row - 1
+    snakeSquare = snake.tail.column - 1
   }
   if(snake.tail.direction === "down"){
-    snakeSquare = snake.tail.row + 1
+    snakeSquare = snake.tail.column + 1
   };
 
   // code to determine the row and column of the snakeSquare to add to the snake
